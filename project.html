@@ -15,42 +15,41 @@
 
 <body>
   <div class="background">
-    <div class="container">
-      <div class="d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4">Sidebar</span>
-          </a>
-          <hr>
-          <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="/index.html"></use>
-                </svg>Home
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#speedometer2"></use>
-                </svg>E-Comerce
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#table"></use>
-                </svg>
-                Object
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
+    <div class="d-flex">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4">Sidebar</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="/index.html"></use>
+              </svg>Home
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2"></use>
+              </svg>E-Comerce
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#table"></use>
+              </svg>
+              Object
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
                   <use xlink:href="#grid"></use>
                 </svg>
                 Products
@@ -70,26 +69,31 @@
             <div class="d-flex">
               <div>
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                  id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                  <strong>Imbaal</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-              </div>
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>Imbaal</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="container-fluid">
-          <form>
+      </div>
+      <div class="container">
+      <div class="container-fluid">
+        <form name="submit-to-google-sheet">
             <legend>Kasih saya masukan</legend>
+            <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+              <strong>Berhasil</strong> Pesan anda Telah  terima
+              <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
             <div class="mb-3">
               <label for="disabledTextInput" class="form-label">Nama Lengkap</label>
               <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
@@ -105,7 +109,11 @@
               <input type="text" class="form-control" placeholder="Pesan" name="pesan">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary btn-kirim">Submit</button>
+            <button class="btn btn-primary d-none btn-load" type="button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
 
           </form>
 
@@ -118,19 +126,30 @@
   </div>
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz1FAaz1YN1KEzf4paDxIV4tG4AhTq5kLMCp29xZUpwWEv62T5DASacZxDU7P4pgud1/exec'
-    const form = document.forms['submit-to-google-sheet']
+    const form = document.forms['submit-to-google-sheet'];
+    const btnkirim = document.querySelector('.btn-kirim');
+    const btnlod = document.querySelector('.btn-load');
+    const maalert = document.querySelector('.alert')
 
+  
     form.addEventListener('submit', e => {
-      e.preventDefault()
+      e.preventDefault();
+      btnlod.classList.toggle('d-none')
+      btnkirim.classList.toggle('d-none')
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
-          console.log('Success!', response)
+          console.log('Success!', response);
+          btnlod.classList.toggle('d-none')
+      btnkirim.classList.toggle('d-none')
+      maalert.classList.toggle('d-none')
+      document
+      form.reset()
+          
         })
         .catch(error => console.error('Error!', error.message))
     })
   </script>
   <script>
-
   </script>
   <script src="footer.html"></script>
 
