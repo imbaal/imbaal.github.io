@@ -1,0 +1,21 @@
+.penutup {
+
+    height:100px; 
+    width: 100%; 
+    background-color: grey;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+
+}   
+
+.penutup_contents {
+
+    height:100px; 
+    width: 1000px; 
+    margin:auto;
+
+}
