@@ -12,13 +12,75 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="biodata.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-    <title>orang</title>
+    <title>TOKO ONLINE</title>
   </head>
   <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="./biodata/putin.png" alt="" />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">Biodata</span>
+            <span class="profession">Muhamad Iqbal</span>
+          </div>
+        </div>
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-link">
+            <li >
+            
+                <button class="btn btn-primary" id="apiorang" ><i class="bx bxl-instagram icon" style="color: ivory;">Tampil</i>
+                </button>
+              
+            </li>
+
+            <li class="nav-dong">
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">Pendidikan</span>
+              </a>
+            </li>
+
+            <li class="nav-dong">
+              <a href="#">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Social Media</span>
+              </a>
+            </li>
+
+            <li class="nav-dong">
+              <a href="project.html">
+                <i class="bx bx-pie-chart-alt icon"></i>
+                <span class="text nav-text">Dokumentasi</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="https://www.google.com/">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Keluar</span>
+            </a>
+          </li>
+        </div>
+      </div>
+    </nav>
     <button id="apiorang" class="btn btn-primary"></button>
-    <div id="output"></div>
+    <div id="output" style="margin-left: 100px;"></div>
     
 
     <script
@@ -38,23 +100,49 @@
           .then((json) => {
             for (let i=0; i<json.length; i++){
               content += `<div class="col">
-    <div class="card">
+    <div class="card" style= "text-align :center; ">
       <img src="${json[i].image}" class="card-img-top" alt="..." style="height: 200px;width: 200px;">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title">${json[i].title}</h5>
+        <p class="card-text">${json[i].description}</p>
       </div>
     </div>
   </div>`;
             }
             document.getElementById("output").innerHTML = content;
     
-            console.log(json[0].image);
+            console.log(json);
           });
 
         // document.getElementById("gambarorang").src = `${orang[0].picture.large}`;
        
       }
+    </script>
+    <script>
+      const body = document.querySelector("body"),
+        sidebar = body.querySelector("nav"),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+      toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+
+      searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+      });
+
+      modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode";
+        } else {
+          modeText.innerText = "Dark mode";
+        }
+      });
     </script>
   </body>
 </html>
