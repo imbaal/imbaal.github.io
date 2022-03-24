@@ -244,7 +244,10 @@ body.dark .mode .sun-moon i.sun{
 body.dark .mode .sun-moon i.moon{
     opacity: 0;
 }
-
+.menu-link{
+    padding-left: 0px;
+    margin-left: 0px;
+}
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
@@ -307,6 +310,10 @@ body.dark .switch::before{
 }
 body.dark .home .text{
     color: var(--text-color);
+}
+
+.nav-link{
+    text-align: center;
 }
 
 .gambar{
