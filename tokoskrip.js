@@ -1,3 +1,4 @@
+var jeniskategori = "jewelery"
 const body = document.querySelector("body"),
   sidebar = body.querySelector("nav"),
   toggle = body.querySelector(".toggle"),
@@ -52,7 +53,7 @@ function getdata() {
 
   // document.getElementById("gambarorang").src = `${orang[0].picture.large}`;
 }
- var jenis ='jewelery'
+
 // cari berdasarkan kategori
 function getcategory() {
   let isicategori = "";
@@ -79,9 +80,27 @@ function getcategory() {
 }
  
 // fungsi mencari berasarkan kategori
+
 function searchbycategory() {
-    console.log(window.jenis)
-  fetch(`https://fakestoreapi.com/products/category/${jenis}`)
+    console.log(jeniskategori);
+    let content ='<div class="row row-cols-1 row-cols-md-2 g-4">'
+  fetch(`https://fakestoreapi.com/products/category/jewelery`)
     .then((res) => res.json())
-    .then((json) => console.log(json));
+    .then((json) => { 
+      for (let i = 0; i < json.length; i++) {
+        content += `<div class="col">
+<div class="card" style= "text-align :center; height:500px ">
+<img src="${json[i].image}" class="card-img-top" alt="..." style="height: 200px;width: 200px;">
+<div class="card-body">
+  <h5 class="card-title">${json[i].title}</h5>
+  <p class="card-text">${json[i].description}</p>
+  <p class ="card-text">${json[i].price}</p>
+
+</div>
+</div>
+</div>`;
+      }
+      document.getElementById("output").innerHTML = content;
+
+      console.log(json)});
 }
