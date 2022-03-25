@@ -73,9 +73,9 @@
 
     <section class="home">
         <div class="container">
-            <div class="container-fluid">
-                <img id="gambarorang" class="rounded mx-auto d-block" alt="...">
-                <a style="text-align: center;" id="idnamaorang"></a>
+            <div class="container-fluid" style="margin-top: 50px;">
+                <img  id="gambarorang" class="rounded mx-auto d-block" alt="..." style="visibility: hidden;">
+                <p style="text-align: center;" id="idnamaorang"></p>
       
               </div>
             </div>
@@ -118,6 +118,7 @@
           let orang = data.results;
           let namaorang = orang[0].name.first +orang[0].name.last
           console.log(orang)
+          document.getElementById("gambarorang").style.visibility ='visible'
           document.getElementById("gambarorang").src = `${orang[0].picture.large}`;
           document.getElementById("idnamaorang").innerHTML = `${namaorang}`;
         });
