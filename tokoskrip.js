@@ -30,6 +30,7 @@ document.getElementById("apiorang").addEventListener("click", getdata);
 document.getElementById("nextorang").addEventListener("click", getdata);
 
 function getdata() {
+  document.getElementById('tokoawal').style.visibility ='hidden'
   let content = "";
   content += '<div class="row row-cols-1 row-cols-md-2 g-4">';
   fetch("https://fakestoreapi.com/products")
@@ -58,6 +59,7 @@ function getdata() {
 
 // cari berdasarkan kategori
 function getcategory() {
+  document.getElementById('tokoawal').style.visibility ='hidden'
   let isicategori = "";
   fetch("https://fakestoreapi.com//products/categories")
     .then((res) => res.json())

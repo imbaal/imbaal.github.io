@@ -14,6 +14,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="biodata.css" />
+    <link rel="stylesheet" href="/orangstyle.css"/>
 
     <!----===== Boxicons CSS ===== -->
     <link
@@ -43,14 +44,14 @@
         <div class="menu">
           <ul class="menu-link">
             <li class="nav-dong">
-              <a onclick="getdata()">
+              <a onclick="getdata()" style="cursor: pointer;">
                 <i class='bx bx-male-female icon' ></i>
                 <span class="text nav-text">Mencari</span>
               </a>
             </li>
 
             <li class="nav-dong">
-              <a href="/orang.html">
+              <a onclick="openForm()">
                 <i class='bx bx-chat icon' ></i>
                 <span class="text nav-text">Obrolan</span>
               </a>
@@ -85,7 +86,22 @@
                 <p style="text-align: center;" id="idnamaorang"></p>
       
               </div>
+            <div style="vertical-align: middle; text-align: center; justify-content: center; display: flex;" >asdasda</div>
             </div>
+
+            
+
+<div class="chat-popup" id="myForm">
+  <form  class="form-container">
+    <div style="background-color: aquamarine; ">
+    <h1>Chat</h1>
+  </div>
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
             
     </section>
 
@@ -123,7 +139,7 @@
         .then((res) => res.json())
         .then((data) => {
           let orang = data.results;
-          let namaorang = orang[0].name.first +orang[0].name.last
+          let namaorang = orang[0].name.first + ' '+orang[0].name.last
           console.log(orang)
           document.getElementById("gambarorang").style.visibility ='visible'
           document.getElementById("gambarorang").src = `${orang[0].picture.large}`;
@@ -131,5 +147,6 @@
         });
     }
   </script>
+  <script src="/orang.js"></script>
   </body>
 </html>
