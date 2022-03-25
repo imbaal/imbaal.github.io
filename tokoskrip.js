@@ -6,7 +6,8 @@ const body = document.querySelector("body"),
   modeText = body.querySelector(".mode-text");
 
 toggle.addEventListener("click", () => {
-  sidebar.classList.toggle("close");});
+  sidebar.classList.toggle("close");
+});
 
 searchBtn.addEventListener("click", () => {
   sidebar.classList.remove("close");
@@ -20,7 +21,6 @@ function ketharga() {
   document.getElementById("fjproduk").innerHTML = totalfooter;
 }
 
-
 ////
 
 document.getElementById("apiorang").addEventListener("click", getdata);
@@ -32,7 +32,7 @@ function getdata() {
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .then((json) => {
-      for (let i=0; i<json.length; i++){
+      for (let i = 0; i < json.length; i++) {
         content += `<div class="col">
 <div class="card" style= "text-align :center; height:500px ">
 <img src="${json[i].image}" class="card-img-top" alt="..." style="height: 200px;width: 200px;">
@@ -51,5 +51,37 @@ function getdata() {
     });
 
   // document.getElementById("gambarorang").src = `${orang[0].picture.large}`;
+}
+ var jenis ='jewelery'
+// cari berdasarkan kategori
+function getcategory() {
+  let isicategori = "";
+  fetch("https://fakestoreapi.com//products/categories")
+    .then((res) => res.json())
+    .then((json) => {
+      isicategori = `<div class="row" >`;
+      for (let i = 0; i < json.length; i++) {
+        isicategori += `
+        <div class="col-sm-6">
+        <div class="card" style ="margin-top:30px;">
+          <div class="card-body">
+          <a onclick = "searchbycategory()">
+            <h5 class="card-title">${json[i]}</h5>
+            </a>
+          </div>
+        </div>
+      </div>`;
+      }
+      isicategori += "</div>";
+
+      document.getElementById("output").innerHTML = isicategori;
+    });
+}
  
+// fungsi mencari berasarkan kategori
+function searchbycategory() {
+    console.log(window.jenis)
+  fetch(`https://fakestoreapi.com/products/category/${jenis}`)
+    .then((res) => res.json())
+    .then((json) => console.log(json));
 }
