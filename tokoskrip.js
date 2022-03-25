@@ -1,4 +1,6 @@
-var jeniskategori = "jewelery"
+var jeniskategori = document.getElementById('tmblkategori').value
+
+//sidebar
 const body = document.querySelector("body"),
   sidebar = body.querySelector("nav"),
   toggle = body.querySelector(".toggle"),
@@ -6,9 +8,9 @@ const body = document.querySelector("body"),
   modeSwitch = body.querySelector(".toggle-switch"),
   modeText = body.querySelector(".mode-text");
 
-toggle.addEventListener("click", () => {
-  sidebar.classList.toggle("close");
-});
+  toggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+  });
 
 searchBtn.addEventListener("click", () => {
   sidebar.classList.remove("close");
@@ -64,9 +66,11 @@ function getcategory() {
       for (let i = 0; i < json.length; i++) {
         isicategori += `
         <div class="col-sm-6">
-        <div class="card" style ="margin-top:30px;">
+        <div class="card" style ="margin-top:30px;" >
           <div class="card-body">
-          <a onclick = "searchbycategory()">
+          
+          <a onclick = "searchbycategory()" >
+            <input hidden="true" type="text" value="${json[i]}">
             <h5 class="card-title">${json[i]}</h5>
             </a>
           </div>
@@ -82,7 +86,8 @@ function getcategory() {
 // fungsi mencari berasarkan kategori
 
 function searchbycategory() {
-    console.log(jeniskategori);
+ 
+  console.log(jeniskategori)
     let content ='<div class="row row-cols-1 row-cols-md-2 g-4">'
   fetch(`https://fakestoreapi.com/products/category/jewelery`)
     .then((res) => res.json())
@@ -104,3 +109,5 @@ function searchbycategory() {
 
       console.log(json)});
 }
+
+
