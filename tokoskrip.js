@@ -1,4 +1,4 @@
-var jeniskategori = document.getElementById('tmblkategori').value
+
 
 //sidebar
 const body = document.querySelector("body"),
