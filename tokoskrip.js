@@ -47,6 +47,13 @@ function getdata() {
   <p class ="card-text">${json[i].price}</p>
 
 </div>
+<div class="d-flex  mx-auto  " >
+<a onclick ="test()">
+<i class='bx bx-minus icon'></i></a>
+A
+<a onclick ="test()">
+<i class='bx bx-plus icon'></i></a>
+</div>
 </div>
 </div>`;
       }
@@ -105,6 +112,7 @@ function searchbycategory() {
   <p class ="card-text">${json[i].price}</p>
 
 </div>
+
 </div>
 </div>`;
       }
@@ -112,4 +120,9 @@ function searchbycategory() {
 
       console.log(json);
     });
+}
+
+
+function test(){
+  console.log('mantap')
 }
