@@ -1,5 +1,3 @@
-
-
 //sidebar
 const body = document.querySelector("body"),
   sidebar = body.querySelector("nav"),
@@ -8,9 +6,9 @@ const body = document.querySelector("body"),
   modeSwitch = body.querySelector(".toggle-switch"),
   modeText = body.querySelector(".mode-text");
 
-  toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
+toggle.addEventListener("click", () => {
+  sidebar.classList.toggle("close");
+});
 
 searchBtn.addEventListener("click", () => {
   sidebar.classList.remove("close");
@@ -30,27 +28,31 @@ document.getElementById("apiorang").addEventListener("click", getdata);
 document.getElementById("nextorang").addEventListener("click", getdata);
 
 function getdata() {
-  document.getElementById('tokoawal').style.visibility ='hidden'
+  document.getElementById("preloader").style.visibility = "visible";
+  document.getElementById("tokoawal").style.visibility = "hidden";
   let content = "";
   content += '<div class="row row-cols-1 row-cols-md-2 g-4">';
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .then((json) => {
+      
       for (let i = 0; i < json.length; i++) {
         content += `<div class="col">
-<div class="card" style= "text-align :center; height:500px ">
-<img src="${json[i].image}" class="card-img-top" alt="..." style="height: 200px;width: 200px;">
+<div class="card" style= " text-align :center; height:500px ">
 <div class="card-body">
-  <h5 class="card-title">${json[i].title}</h5>
-  <p class="card-text">${json[i].description}</p>
+<img src="${json[i].image}"  alt="..." style="height: 200px;width: 200px; ">
+  <h6 class="card-title">${json[i].title}</h6>
+  <p class="card-text" style="  max-height: 100px;
+  overflow-y: auto; ">${json[i].description}</p>
   <p class ="card-text">${json[i].price}</p>
 
 </div>
 </div>
 </div>`;
       }
+      
       document.getElementById("output").innerHTML = content;
-
+      document.getElementById("preloader").style.visibility = "hidden";
       console.log(json);
     });
 
@@ -59,7 +61,7 @@ function getdata() {
 
 // cari berdasarkan kategori
 function getcategory() {
-  document.getElementById('tokoawal').style.visibility ='hidden'
+  document.getElementById("tokoawal").style.visibility = "hidden";
   let isicategori = "";
   fetch("https://fakestoreapi.com//products/categories")
     .then((res) => res.json())
@@ -84,16 +86,15 @@ function getcategory() {
       document.getElementById("output").innerHTML = isicategori;
     });
 }
- 
+
 // fungsi mencari berasarkan kategori
 
 function searchbycategory() {
- 
-  console.log(jeniskategori)
-    let content ='<div class="row row-cols-1 row-cols-md-2 g-4">'
+  console.log(jeniskategori);
+  let content = '<div class="row row-cols-1 row-cols-md-2 g-4">';
   fetch(`https://fakestoreapi.com/products/category/jewelery`)
     .then((res) => res.json())
-    .then((json) => { 
+    .then((json) => {
       for (let i = 0; i < json.length; i++) {
         content += `<div class="col">
 <div class="card" style= "text-align :center; height:500px ">
@@ -109,7 +110,6 @@ function searchbycategory() {
       }
       document.getElementById("output").innerHTML = content;
 
-      console.log(json)});
+      console.log(json);
+    });
 }
-
-
